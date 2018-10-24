@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.swing.JCheckBox;
 
-import com.framework.common.beans.Field;
+import org.qingfox.framework.common.beans.Field;
 import com.framework.swing.components.panels.LayoutPanel;
 import com.framework.swing.form.panels.fields.IPickField;
 import com.framework.swing.form.panels.fields.IPickFieldModel;

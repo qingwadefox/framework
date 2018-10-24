@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.SwingConstants;
 
-import com.framework.common.utils.ThreadUtil;
+import org.qingfox.framework.common.utils.ThreadUtil;
 import com.framework.swing.beans.ProgressBean;
 
 public class ProgressBarDialog extends JDialog {

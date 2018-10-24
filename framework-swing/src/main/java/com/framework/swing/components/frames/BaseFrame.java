@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.framework.common.utils.RandomUtil;
+import org.qingfox.framework.common.utils.RandomUtil;
 import com.framework.swing.beans.ProgressBean;
 import com.framework.swing.components.IComponent;
 import com.framework.swing.components.dialogs.ProgressBarDialog;

@@ -6,7 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
-import com.framework.common.utils.ReflectUtil;
+import org.qingfox.framework.common.utils.ReflectUtil;
 import com.framework.swing.form.panels.fields.IField;
 
 public class TableCellRender extends DefaultTableCellRenderer {

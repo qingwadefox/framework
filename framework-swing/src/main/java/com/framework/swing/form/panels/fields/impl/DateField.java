@@ -18,7 +18,7 @@ import javax.swing.plaf.ColorUIResource;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
-import com.framework.common.utils.DateUtil;
+import org.qingfox.framework.common.utils.DateUtil;
 import com.framework.swing.borders.FilletLineBorder;
 import com.framework.swing.components.labels.EllipseLabel;
 import com.framework.swing.components.panels.LayoutPanel;

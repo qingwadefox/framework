@@ -1,6 +1,6 @@
 package com.framework.swing.form.panels.impl;
 
-import com.framework.common.beans.Field;
+import org.qingfox.framework.common.beans.Field;
 import com.framework.swing.form.panels.fields.IField;
 import com.framework.swing.form.panels.fields.impl.ComboField;
 

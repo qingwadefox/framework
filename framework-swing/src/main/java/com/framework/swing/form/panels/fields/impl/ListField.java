@@ -30,7 +30,7 @@ import javax.swing.event.ListSelectionListener;
 
 import org.apache.commons.lang3.ArrayUtils;
 
-import com.framework.common.beans.Field;
+import org.qingfox.framework.common.beans.Field;
 import com.framework.swing.form.panels.fields.IAutoComplete;
 import com.framework.swing.form.panels.fields.IPickField;
 import com.framework.swing.form.panels.fields.IPickFieldModel;

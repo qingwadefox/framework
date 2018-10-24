@@ -13,7 +13,7 @@ import javax.swing.JDialog;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.framework.common.utils.RandomUtil;
+import org.qingfox.framework.common.utils.RandomUtil;
 import com.framework.swing.components.IComponent;
 import com.framework.swing.components.ILayoutComponent;
 import com.framework.swing.exceptions.ExistComponentsException;

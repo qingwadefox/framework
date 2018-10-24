@@ -11,7 +11,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
-import com.framework.common.utils.ReflectUtil;
+import org.qingfox.framework.common.utils.ReflectUtil;
 import com.framework.swing.beans.ColumnBean;
 import com.framework.swing.components.IComponent;
 import com.framework.swing.form.panels.fields.IField;

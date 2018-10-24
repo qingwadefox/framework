@@ -2,7 +2,7 @@ package com.framework.swing.form.panels.fields.impl;
 
 import java.awt.Color;
 
-import com.framework.common.beans.Field;
+import org.qingfox.framework.common.beans.Field;
 import com.framework.swing.components.labels.SelectLabel;
 import com.framework.swing.enums.ColorEnum;
 import com.framework.swing.form.panels.fields.IPickFieldModel;

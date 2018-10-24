@@ -1,6 +1,6 @@
 package com.framework.swing.form.panels.fields;
 
-import com.framework.common.beans.Field;
+import org.qingfox.framework.common.beans.Field;
 
 public interface IPickField<T> extends IField<T> {
 
