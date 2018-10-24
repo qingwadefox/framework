@@ -2,7 +2,6 @@ package com.framework.database.manager;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 import com.framework.common.utils.ClassUtil;
