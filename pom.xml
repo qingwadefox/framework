@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com</groupId>
 	<artifactId>framework</artifactId>
@@ -12,20 +14,20 @@
 		<!-- <module>framework-office</module> -->
 		<module>framework-database</module>
 		<module>framework-swing</module>
-		<!-- <module>framework-microservice</module> -->
-		<!-- <module>framework-web-mvc</module> -->
-		<!-- <module>framework-web-manager</module> -->
-		<!-- <module>framework-web-page</module> -->
+		<module>framework-microservice</module>
+		<module>framework-web-mvc</module>
+		<module>framework-web-manager</module>
+		<module>framework-web-page</module>
 
 		<!-- framework-web start -->
-		<!-- <module>frameowrk-web/framework-web-core</module> -->
-		<!-- <module>frameowrk-web/framework-web-pages</module> -->
+		<module>frameowrk-web/framework-web-core</module>
+		<module>frameowrk-web/framework-web-pages</module>
 		<!-- framework-web end -->
 
 		<!-- framework-socket start -->
-		<!-- <module>framework-socket/framework-socket-api</module> -->
-		<!-- <module>framework-socket/framework-socket-client</module> -->
-		<!-- <module>framework-socket/framework-socket-server</module> -->
+		<module>framework-socket/framework-socket-api</module>
+		<module>framework-socket/framework-socket-client</module>
+		<module>framework-socket/framework-socket-server</module>
 		<!-- framework-socket end -->
 		<module>framework-test</module>
 	</modules>
@@ -78,6 +80,7 @@
 		<jsoup.version>1.11.2</jsoup.version>
 		<hanlp.version>portable-1.5.2</hanlp.version>
 		<thumbnailator.version>0.4.8</thumbnailator.version>
+		<websocket-client.version>9.4.12.v20180830</websocket-client.version>
 	</properties>
 
 	<dependencyManagement>
@@ -635,6 +638,13 @@
 				<artifactId>thumbnailator</artifactId>
 				<version>${thumbnailator.version}</version>
 			</dependency>
+
+			<dependency>
+				<groupId>org.eclipse.jetty.websocket</groupId>
+				<artifactId>websocket-client</artifactId>
+				<version>${websocket-client.version}</version>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 
