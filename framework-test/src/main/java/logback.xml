@@ -1,0 +1,32 @@
+<configuration>
+
+
+	<appender name="rollingAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>D:/pddproject/logs/test.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>D:/pddproject/logs/test-%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<encoder><!-- 必须指定，否则不会往文件输出内容 -->
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n</pattern>
+		</encoder>
+		<append>false</append>
+		<prudent>false</prudent>
+	</appender>
+
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<!-- encoder 默认配置为PatternLayoutEncoder -->
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	
+	<root level="INFO">
+		<appender-ref ref="STDOUT" />
+	</root>
+
+	<logger name="com.framework" level="DEBUG"></logger>
+
+</configuration>  
