@@ -41,10 +41,11 @@ public abstract class MicroserviceServer implements IServer {
 
   @Override
   public void start() throws IOException {
-    Validate.notNull(port);
+    Validate.notNull(port, "port is null");
     logger.info("port - ", port);
+    beforeStart();
     scanPackage();
-    Validate.notEmpty(classList);
+    Validate.notEmpty(classList, "classList is empty");
     registerServices(classList);
   }
 
@@ -58,7 +59,7 @@ public abstract class MicroserviceServer implements IServer {
    * @throws IOException
    */
   private void scanPackage() throws IOException {
-    Validate.notEmpty(scanPackage);
+    Validate.notEmpty(scanPackage, "scanPackage is null");
     logger.info("scanPackage - ", scanPackage);
     PackageScanner scanner = new PackageScanner(scanPackage);
     classList = scanner.scan();
@@ -90,5 +91,7 @@ public abstract class MicroserviceServer implements IServer {
   }
 
   protected abstract void registerService(Class<?> _class);
+
+  protected abstract void beforeStart();
 
 }
