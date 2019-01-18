@@ -10,7 +10,7 @@ import org.qingfox.framework.database.stereotypes.Column;
 import org.qingfox.framework.database.stereotypes.Table;
 import org.qingfox.framework.database.utils.EntityUtil;
 
-import com.framework.common.utils.ReflectUtil;
+import org.qingfox.framework.common.utils.ReflectUtil;
 
 public class BaseEntity<T extends Serializable> implements IEntity<T> {
 

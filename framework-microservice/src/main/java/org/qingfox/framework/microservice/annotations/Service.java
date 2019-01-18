@@ -29,18 +29,23 @@ import java.lang.annotation.Target;
  * @版权：福富软件 版权所有 (c) 2015
  * @author zhengwei3@ffcs.cn
  * @version Revision 1.0.0
- * @see:
- * @创建日期：2017年3月17日
- * @功能说明：
+ * @see: @创建日期：2017年3月17日 @功能说明：
  * 
  */
-@Target({ElementType.TYPE, ElementType.METHOD})
+@Target({ ElementType.TYPE, ElementType.METHOD })
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface Service {
-	String value() default "";
-	String name() default "";
-	String returndetail() default "";
-	String[] params() default {};
-	String[] paramsdetail() default {};
+    String value() default "";
+
+    String name() default "";
+
+    String version() default "1.0";
+
+    String returndetail() default "";
+
+    String[] params() default {};
+
+    String[] paramsdetail() default {};
+
 }

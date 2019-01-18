@@ -3,7 +3,7 @@ package org.qingfox.framework.database.sequence.impl;
 
 import org.qingfox.framework.database.sequence.ISequenceCreate;
 
-import com.framework.common.utils.DateUtil;
+import org.qingfox.framework.common.utils.DateUtil;
 
 public class DateStringCreate implements ISequenceCreate<String> {
 

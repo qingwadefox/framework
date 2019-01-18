@@ -560,7 +560,7 @@ public class ReflectUtil {
 	 * @throws NoSuchMethodException
 	 * @throws SecurityException
 	 */
-	public static Object invokMethodmatch(Object classObj, String name, Object... parameters) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+	public static Object invokMethodmatch(Object classObj, String name, Object... parameters) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		return invokMethod(classObj, name, false, parameters);
 	}
 

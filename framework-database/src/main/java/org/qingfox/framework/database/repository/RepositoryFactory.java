@@ -32,10 +32,10 @@ import org.qingfox.framework.database.dao.impl.MapDaoImpl;
 import org.qingfox.framework.database.inf.Initializing;
 import org.qingfox.framework.database.stereotypes.Repository;
 
-import com.framework.common.log.ILogger;
-import com.framework.common.log.LoggerFactory;
-import com.framework.common.scanner.PackageScanner;
-import com.framework.common.utils.ReflectUtil;
+import org.qingfox.framework.common.log.ILogger;
+import org.qingfox.framework.common.log.LoggerFactory;
+import org.qingfox.framework.common.scanner.PackageScanner;
+import org.qingfox.framework.common.utils.ReflectUtil;
 
 /**
  * .

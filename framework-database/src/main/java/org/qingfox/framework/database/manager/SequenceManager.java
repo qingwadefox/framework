@@ -4,9 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
-import com.framework.common.utils.ClassUtil;
-import com.framework.common.utils.FileUtil;
-import com.framework.common.utils.PropertiesUtil;
+import org.qingfox.framework.common.utils.ClassUtil;
+import org.qingfox.framework.common.utils.FileUtil;
+import org.qingfox.framework.common.utils.PropertiesUtil;
 
 public class SequenceManager {
 

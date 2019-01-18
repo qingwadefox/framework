@@ -22,8 +22,8 @@ import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import com.framework.common.log.ILogger;
-import com.framework.common.log.LoggerFactory;
+import org.qingfox.framework.common.log.ILogger;
+import org.qingfox.framework.common.log.LoggerFactory;
 
 public class DataBaseFactory {
 

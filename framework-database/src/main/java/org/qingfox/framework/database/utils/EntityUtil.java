@@ -14,7 +14,7 @@ import org.qingfox.framework.database.entity.IEntity;
 import org.qingfox.framework.database.stereotypes.Column;
 import org.qingfox.framework.database.stereotypes.Table;
 
-import com.framework.common.utils.ReflectUtil;
+import org.qingfox.framework.common.utils.ReflectUtil;
 
 public class EntityUtil {
 

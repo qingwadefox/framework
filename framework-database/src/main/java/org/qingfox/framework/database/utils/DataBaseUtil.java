@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import org.qingfox.framework.database.enums.DBTypeEnum;
 import org.qingfox.framework.database.enums.SqlClassEnum;
 
-import com.framework.common.utils.RandomUtil;
+import org.qingfox.framework.common.utils.RandomUtil;
 
 public class DataBaseUtil {
 

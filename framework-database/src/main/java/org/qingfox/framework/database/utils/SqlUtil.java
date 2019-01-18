@@ -17,7 +17,7 @@ import org.qingfox.framework.database.beans.PageBean;
 import org.qingfox.framework.database.beans.ValueBean;
 import org.qingfox.framework.database.enums.DBTypeEnum;
 
-import com.framework.common.utils.ReflectUtil;
+import org.qingfox.framework.common.utils.ReflectUtil;
 
 public class SqlUtil {
 
