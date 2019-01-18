@@ -94,13 +94,13 @@ import org.qingfox.framework.test.pdd.threads.SellServiceTask;
 import org.qingfox.framework.test.pdd.threads.listener.ISellServiceTaskListener;
 
 import com.alibaba.fastjson.JSONObject;
-import com.framework.common.beans.Field;
-import com.framework.common.beans.Result;
-import com.framework.common.log.ILogger;
-import com.framework.common.log.LoggerFactory;
-import com.framework.common.utils.DateUtil;
-import com.framework.common.utils.PropertiesUtil;
-import com.framework.common.utils.ThreadUtil;
+import  org.qingfox.framework.common.beans.Field;
+import  org.qingfox.framework.common.beans.Result;
+import  org.qingfox.framework.common.log.ILogger;
+import  org.qingfox.framework.common.log.LoggerFactory;
+import  org.qingfox.framework.common.utils.DateUtil;
+import  org.qingfox.framework.common.utils.PropertiesUtil;
+import  org.qingfox.framework.common.utils.ThreadUtil;
 
 /**
  * .
