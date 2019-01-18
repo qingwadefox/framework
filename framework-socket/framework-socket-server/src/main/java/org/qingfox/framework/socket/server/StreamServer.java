@@ -12,8 +12,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.framework.common.log.ILogger;
-import com.framework.common.log.LoggerFactory;
+import org.qingfox.framework.common.log.ILogger;
+import org.qingfox.framework.common.log.LoggerFactory;
 import org.qingfox.framework.socket.api.Message;
 import org.qingfox.framework.socket.api.ProxyMessage;
 import org.qingfox.framework.socket.server.listener.IServerListener;

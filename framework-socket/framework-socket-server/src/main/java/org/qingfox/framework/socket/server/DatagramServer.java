@@ -10,8 +10,8 @@ import java.util.List;
 import org.apache.commons.lang3.ArrayUtils;
 import org.qingfox.framework.socket.server.listener.IServerListener;
 
-import com.framework.common.log.ILogger;
-import com.framework.common.log.LoggerFactory;
+import org.qingfox.framework.common.log.ILogger;
+import org.qingfox.framework.common.log.LoggerFactory;
 
 public class DatagramServer implements IServer<byte[]> {
 

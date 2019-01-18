@@ -25,7 +25,7 @@
 
 
 		<dependency>
-			<groupId>com</groupId>
+			<groupId>org.qingfox.framework</groupId>
 			<artifactId>framework-common</artifactId>
 			<version>${project.version}</version>
 		</dependency>
