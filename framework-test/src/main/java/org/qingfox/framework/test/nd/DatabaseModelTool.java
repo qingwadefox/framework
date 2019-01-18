@@ -15,9 +15,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.qingfox.framework.database.enums.SqlClassEnum;
 import org.qingfox.framework.test.nd.bean.DatabaseModelBean;
 
-import com.framework.common.utils.FileUtil;
-import com.framework.common.utils.ReadLine;
-import com.framework.common.utils.StrUtil;
+import org.qingfox.framework.common.utils.FileUtil;
+import org.qingfox.framework.common.utils.ReadLine;
+import org.qingfox.framework.common.utils.StrUtil;
 
 public class DatabaseModelTool {
 
@@ -37,7 +37,6 @@ public class DatabaseModelTool {
         analysisTextFile();
     }
 
-    
     private void analysisTextFile() {
         databaseModelList = new ArrayList<>();
         try {
@@ -53,7 +52,7 @@ public class DatabaseModelTool {
             e.printStackTrace();
         }
     }
-    
+
     private boolean analysisIsNull(String isNullStr) {
         if (StringUtils.isEmpty(isNullStr)) {
             return true;
@@ -107,7 +106,7 @@ public class DatabaseModelTool {
 
                     "| style=\"width: 100px; background-color: rgb(255, 255, 255);\" | <br/>\r\n" +
 
-                    "| style=\"width: 300px; background-color: rgb(255, 255, 255);\" | "+databaseModelBean.getRemark()+"\r\n");
+                    "| style=\"width: 300px; background-color: rgb(255, 255, 255);\" | " + databaseModelBean.getRemark() + "\r\n");
         }
 
         wikiText.append("|}");

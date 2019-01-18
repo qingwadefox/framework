@@ -24,8 +24,7 @@ import java.util.List;
 import org.qingfox.framework.test.pdd.service.inf.ILoginService;
 import org.qingfox.framework.test.pdd.service.listeners.LoginListener;
 
-import com.framework.common.exceptions.ServiceException;
-import com.framework.common.utils.RandomUtil;
+import org.qingfox.framework.common.utils.RandomUtil;
 
 /**
  * .
@@ -37,81 +36,81 @@ import com.framework.common.utils.RandomUtil;
  * 
  */
 public abstract class LoginService implements ILoginService {
-	private String id;
-	private Boolean login;
-	private List<LoginListener> loginListeners;
-	private String username;
-	private String password;
+    private String id;
+    private Boolean login;
+    private List<LoginListener> loginListeners;
+    private String username;
+    private String password;
 
-	public LoginService() {
-		login = false;
-		id = RandomUtil.getSimpleUUID();
-		loginListeners = new LinkedList<LoginListener>();
-	}
+    public LoginService() {
+        login = false;
+        id = RandomUtil.getSimpleUUID();
+        loginListeners = new LinkedList<LoginListener>();
+    }
 
-	public String getId() {
-		return id;
-	}
+    public String getId() {
+        return id;
+    }
 
-	protected void setId(String id) {
-		this.id = id;
-	}
+    protected void setId(String id) {
+        this.id = id;
+    }
 
-	public boolean isLogin() {
-		return login;
-	}
+    public boolean isLogin() {
+        return login;
+    }
 
-	protected void setLogin(Boolean login) {
-		this.login = login;
-	}
+    protected void setLogin(Boolean login) {
+        this.login = login;
+    }
 
-	protected void checkLogin() throws ServiceException {
-		if (!isLogin()) {
-			throw new ServiceException("服务未登录");
-		}
-	}
+    protected void checkLogin() {
+        if (!isLogin()) {
+            throw new RuntimeException("服务未登录");
+        }
+    }
 
-	public String getUsername() {
-		return username;
-	}
+    public String getUsername() {
+        return username;
+    }
 
-	protected void setUsername(String username) {
-		this.username = username;
-	}
+    protected void setUsername(String username) {
+        this.username = username;
+    }
 
-	protected String getPassword() {
-		return password;
-	}
+    protected String getPassword() {
+        return password;
+    }
 
-	protected void setPassword(String password) {
-		this.password = password;
-	}
+    protected void setPassword(String password) {
+        this.password = password;
+    }
 
-	protected void onLogin() {
-		for (LoginListener listener : loginListeners) {
-			listener.onLogin(this);
-		}
-	}
+    protected void onLogin() {
+        for (LoginListener listener : loginListeners) {
+            listener.onLogin(this);
+        }
+    }
 
-	protected void onLogout() {
-		for (LoginListener listener : loginListeners) {
-			listener.onLogout(this);
-		}
-	}
+    protected void onLogout() {
+        for (LoginListener listener : loginListeners) {
+            listener.onLogout(this);
+        }
+    }
 
-	protected void onCodeChange(File codeFile) {
-		for (LoginListener listener : loginListeners) {
-			listener.onCodeChange(this, codeFile);
-		}
-	}
+    protected void onCodeChange(File codeFile) {
+        for (LoginListener listener : loginListeners) {
+            listener.onCodeChange(this, codeFile);
+        }
+    }
 
-	@Override
-	public void addLoginListener(LoginListener listener) {
-		this.loginListeners.add(listener);
-	}
+    @Override
+    public void addLoginListener(LoginListener listener) {
+        this.loginListeners.add(listener);
+    }
 
-	@Override
-	public void removeLoginListener(LoginListener listener) {
-		this.loginListeners.remove(listener);
-	}
+    @Override
+    public void removeLoginListener(LoginListener listener) {
+        this.loginListeners.remove(listener);
+    }
 }

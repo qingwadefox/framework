@@ -62,6 +62,17 @@ import javax.swing.text.html.HTMLDocument;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.qingfox.framework.swing.beans.ProgressBean;
+import org.qingfox.framework.swing.components.frames.BaseFrame;
+import org.qingfox.framework.swing.components.panels.LayoutPanel;
+import org.qingfox.framework.swing.components.table.TablePanel;
+import org.qingfox.framework.swing.form.panels.fields.IField;
+import org.qingfox.framework.swing.form.panels.fields.impl.ComboField;
+import org.qingfox.framework.swing.form.panels.fields.impl.ListField;
+import org.qingfox.framework.swing.form.panels.fields.impl.TextField;
+import org.qingfox.framework.swing.form.panels.impl.ComboFieldPanel;
+import org.qingfox.framework.swing.form.panels.impl.TextComboFieldPanel;
+import org.qingfox.framework.swing.inf.IColumnRender;
 import org.qingfox.framework.test.pdd.constant.PathConstant;
 import org.qingfox.framework.test.pdd.entity.AccountEntity;
 import org.qingfox.framework.test.pdd.entity.ChatEntity;
@@ -90,17 +101,6 @@ import com.framework.common.log.LoggerFactory;
 import com.framework.common.utils.DateUtil;
 import com.framework.common.utils.PropertiesUtil;
 import com.framework.common.utils.ThreadUtil;
-import com.framework.swing.beans.ProgressBean;
-import com.framework.swing.components.frames.BaseFrame;
-import com.framework.swing.components.panels.LayoutPanel;
-import com.framework.swing.components.table.TablePanel;
-import com.framework.swing.form.panels.fields.IField;
-import com.framework.swing.form.panels.fields.impl.ComboField;
-import com.framework.swing.form.panels.fields.impl.ListField;
-import com.framework.swing.form.panels.fields.impl.TextField;
-import com.framework.swing.form.panels.impl.ComboFieldPanel;
-import com.framework.swing.form.panels.impl.TextComboFieldPanel;
-import com.framework.swing.inf.IColumnRender;
 
 /**
  * .

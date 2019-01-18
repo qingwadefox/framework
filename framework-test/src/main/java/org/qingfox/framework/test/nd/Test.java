@@ -3,7 +3,7 @@ package org.qingfox.framework.test.nd;
 import java.util.Calendar;
 import java.util.Scanner;
 
-import com.framework.common.utils.DateUtil;
+import  org.qingfox.framework.common.utils.DateUtil;
 
 public class Test {
 

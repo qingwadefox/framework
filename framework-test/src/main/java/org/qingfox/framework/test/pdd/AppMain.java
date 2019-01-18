@@ -17,9 +17,8 @@
  */
 package org.qingfox.framework.test.pdd;
 
+import org.qingfox.framework.swing.components.frames.BaseFrame;
 import org.qingfox.framework.test.pdd.swing.SwingMain;
-
-import com.framework.swing.components.frames.BaseFrame;
 
 /**
  * .

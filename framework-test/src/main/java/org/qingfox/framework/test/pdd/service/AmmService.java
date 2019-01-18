@@ -17,13 +17,12 @@ import org.qingfox.framework.test.pdd.entity.GoodsEntity;
 import org.qingfox.framework.test.pdd.service.inf.ICommissionService;
 import org.qingfox.framework.test.pdd.utils.WebDriverUtils;
 
-import com.framework.common.exceptions.ServiceException;
-import com.framework.common.log.ILogger;
-import com.framework.common.log.LoggerFactory;
-import com.framework.common.utils.DateUtil;
-import com.framework.common.utils.FileUtil;
-import com.framework.common.utils.PropertiesUtil;
-import com.framework.common.utils.ThreadUtil;
+import  org.qingfox.framework.common.log.ILogger;
+import  org.qingfox.framework.common.log.LoggerFactory;
+import  org.qingfox.framework.common.utils.DateUtil;
+import  org.qingfox.framework.common.utils.FileUtil;
+import  org.qingfox.framework.common.utils.PropertiesUtil;
+import  org.qingfox.framework.common.utils.ThreadUtil;
 
 public class AmmService extends LoginService implements ICommissionService {
 	private static final ILogger logger = LoggerFactory.getLogger(AmmService.class);
@@ -143,7 +142,7 @@ public class AmmService extends LoginService implements ICommissionService {
 			} catch (Exception e) {
 			}
 			if (lock) {
-				throw new ServiceException("碰到滑块");
+				throw new RuntimeException("碰到滑块");
 			}
 
 			logger.info("点击登陆");
@@ -153,7 +152,7 @@ public class AmmService extends LoginService implements ICommissionService {
 			Cookie cookie = driver.manage().getCookieNamed("login");
 
 			if (cookie == null) {
-				throw new ServiceException("登录失败");
+				throw new RuntimeException("登录失败");
 			} else {
 				setUsername(username);
 				setPassword(password);
@@ -177,7 +176,7 @@ public class AmmService extends LoginService implements ICommissionService {
 			JSONObject responseJSON = JSONObject.parseObject(WebDriverUtils.waitTagname(driver, "pre").getText());
 			String shortLinkUrl = responseJSON.getJSONObject("data").getString("shortLinkUrl");
 			if (StringUtils.isEmpty(shortLinkUrl)) {
-				throw new ServiceException("推广地址为空");
+				throw new RuntimeException("推广地址为空");
 			}
 			return shortLinkUrl;
 		}

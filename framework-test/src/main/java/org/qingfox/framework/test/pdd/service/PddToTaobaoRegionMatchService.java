@@ -12,7 +12,6 @@ import org.apache.commons.io.FileUtils;
 import org.qingfox.framework.test.pdd.service.inf.IRegionMatchService;
 
 import com.alibaba.fastjson.JSONObject;
-import com.framework.common.exceptions.ServiceException;
 
 /**
  * @author zhengwei
@@ -20,27 +19,27 @@ import com.framework.common.exceptions.ServiceException;
  */
 public class PddToTaobaoRegionMatchService implements IRegionMatchService {
 
-	private Map<String, JSONObject> region;
+    private Map<String, JSONObject> region;
 
-	public PddToTaobaoRegionMatchService(String configDir) throws Exception {
+    public PddToTaobaoRegionMatchService(String configDir) throws Exception {
 
-		String regionMatchPddDir = configDir + File.separator + "region_match_pdd";
-		File regionMatchPddFile = new File(regionMatchPddDir + File.separator + "region_match.dat");
-		if (!regionMatchPddFile.exists()) {
-			throw new ServiceException("文件【", regionMatchPddFile.getPath(), "】不存在");
-		}
+        String regionMatchPddDir = configDir + File.separator + "region_match_pdd";
+        File regionMatchPddFile = new File(regionMatchPddDir + File.separator + "region_match.dat");
+        if (!regionMatchPddFile.exists()) {
+            throw new RuntimeException("文件【" + regionMatchPddFile.getPath() + "】不存在");
+        }
 
-		region = new HashMap<String, JSONObject>();
-		List<String> regionMatchPddLines = FileUtils.readLines(regionMatchPddFile);
-		for (String regionMatchPddLine : regionMatchPddLines) {
-			JSONObject matchRegionJson = JSONObject.parseObject(regionMatchPddLine);
-			region.put(matchRegionJson.getString("sellRegionId"), matchRegionJson);
-		}
-	}
+        region = new HashMap<String, JSONObject>();
+        List<String> regionMatchPddLines = FileUtils.readLines(regionMatchPddFile);
+        for (String regionMatchPddLine : regionMatchPddLines) {
+            JSONObject matchRegionJson = JSONObject.parseObject(regionMatchPddLine);
+            region.put(matchRegionJson.getString("sellRegionId"), matchRegionJson);
+        }
+    }
 
-	@Override
-	public String getRegionId(String sellRegionId) {
-		return region.get(sellRegionId).getString("buyRegionId");
-	}
+    @Override
+    public String getRegionId(String sellRegionId) {
+        return region.get(sellRegionId).getString("buyRegionId");
+    }
 
 }
