@@ -1,90 +1,89 @@
 package org.qingfox.framework.microservice.context;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import org.qingfox.framework.common.utils.ReflectUtil;
+import org.qingfox.framework.common.log.ILogger;
+import org.qingfox.framework.common.log.LoggerFactory;
+import org.qingfox.framework.common.utils.ConvertUtil;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 
 public class ServiceRequest implements Serializable {
 
+    private static final ILogger logger = LoggerFactory.getLogger(ServiceRequest.class);
+
     private static final long serialVersionUID = 2216421646730330648L;
 
-    private Map<String, Object> urlParams;
-    private Map<String, Object> bodyParams;
+    private JSONObject urlParamsJSON;
+    private JSONObject bodyParamsJSON;
+    private String bodyString;
 
-    public static ServiceRequest newInstance() {
-        return new ServiceRequest();
-    }
-
-    public ServiceRequest() {
-        urlParams = new HashMap<>();
-        bodyParams = new HashMap<>();
-    }
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    public ServiceRequest addUrlParams(String name, Object value) {
-        Object _value = urlParams.get(name);
-        if (_value == null) {
-            urlParams.put(name, value);
-        } else if (ReflectUtil.existInterfaces(_value.getClass(), Collection.class)) {
-            ((Collection) _value).add(value);
-            urlParams.put(name, _value);
-        } else {
-            List<Object> list = new ArrayList<>();
-            list.add(_value);
-            list.add(value);
-            urlParams.put(name, list);
+    public ServiceRequest(Map<String, String[]> urlParameterMap, String bodyString) {
+        urlParamsJSON = (JSONObject) JSON.toJSON(urlParameterMap);
+        logger.debug(" params json - ", urlParamsJSON.toJSONString());
+        try {
+            bodyParamsJSON = JSON.parseObject(bodyString);
+            logger.debug(" body json - ", bodyParamsJSON.toJSONString());
+        } catch (Exception e) {
+            this.bodyString = bodyString;
+            logger.debug(" body string - ", bodyString);
         }
-        return this;
     }
 
-    public ServiceRequest addAndReplaceUrlParams(String name, Object value) {
-        urlParams.put(name, value);
-        return this;
+    public String getURLString(String name) {
+        return this.getURLString(name, 0);
     }
 
-    public ServiceRequest addAndReplaceBodyParams(String name, Object value) {
-        bodyParams.put(name, value);
-        return this;
-    }
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    public ServiceRequest addBodyParams(String name, Object value) {
-        Object _value = bodyParams.get(name);
-        if (_value == null) {
-            bodyParams.put(name, value);
-        } else if (ReflectUtil.existInterfaces(_value.getClass(), Collection.class)) {
-            ((Collection) _value).add(value);
-            bodyParams.put(name, _value);
-        } else {
-            List<Object> list = new ArrayList<>();
-            list.add(_value);
-            list.add(value);
-            bodyParams.put(name, list);
+    public String getURLString(String name, Integer index) {
+        if (urlParamsJSON == null) {
+            return null;
         }
-        return this;
+        JSONArray jsonArray = urlParamsJSON.getJSONArray(name);
+        if (jsonArray != null && jsonArray.size() > index) {
+            return jsonArray.getString(index);
+        } else {
+            return null;
+        }
     }
 
-    public Map<String, Object> getUrlParams() {
-        return urlParams;
+    public <T> T getURLObject(String name, Class<T> clazz) {
+        return ConvertUtil.convert(getURLString(name, 0), clazz);
     }
 
-    public ServiceRequest setUrlParams(Map<String, Object> urlParams) {
-        this.urlParams = urlParams;
-        return this;
+    public <T> T getURLObject(String name, Integer index, Class<T> clazz) {
+        return ConvertUtil.convert(getURLString(name, index), clazz);
     }
 
-    public Map<String, Object> getBodyParams() {
-        return bodyParams;
+    public String[] getURLStrings(String name) {
+        if (urlParamsJSON == null) {
+            return null;
+        }
+        JSONArray jsonArray = urlParamsJSON.getJSONArray(name);
+        if (jsonArray != null && !jsonArray.isEmpty()) {
+            String[] params = new String[jsonArray.size()];
+            return jsonArray.toArray(params);
+        } else {
+            return null;
+        }
     }
 
-    public ServiceRequest setBodyParams(Map<String, Object> bodyParams) {
-        this.bodyParams = bodyParams;
-        return this;
+    public String getBodyString(String name) {
+        return this.getBodyObject(name, String.class);
+    }
+
+    public <T> T getBodyObject(String name, Class<T> clazz) {
+        if (bodyParamsJSON == null) {
+            return null;
+        }
+        Object obj = bodyParamsJSON.get(name);
+        return ConvertUtil.convert(obj, clazz);
+    }
+
+    public String getBodyString() {
+        return bodyString;
     }
 
 }

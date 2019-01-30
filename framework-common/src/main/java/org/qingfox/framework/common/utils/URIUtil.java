@@ -36,6 +36,17 @@ public class URIUtil {
     }
 
     public static String appendUrlPath(String url, String path) {
+        if (!url.endsWith(URL_SPLIT)) {
+            url += URL_SPLIT;
+        }
         return url + (StringUtils.isEmpty(path) ? "" : path + URL_SPLIT);
+    }
+
+    public static String appendUrlResource(String url, String resource) {
+        if (!url.endsWith(URL_SPLIT)) {
+            url += URL_SPLIT;
+        }
+        return url + resource.replace(URL_SPLIT, "");
+
     }
 }

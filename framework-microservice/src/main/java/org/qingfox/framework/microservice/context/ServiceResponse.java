@@ -19,6 +19,7 @@ package org.qingfox.framework.microservice.context;
 
 import java.io.Serializable;
 
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.qingfox.framework.microservice.enums.RespCode;
 
 /**
@@ -30,44 +31,48 @@ import org.qingfox.framework.microservice.enums.RespCode;
  * @see: @创建日期：2017年3月20日 @功能说明：
  * 
  */
-public class ServiceResponse<T extends Serializable> implements Serializable {
+public class ServiceResponse<T> implements Serializable {
 
-  private static final long serialVersionUID = -3655843737033626726L;
-  private RespCode code;
-  private String errorMsg;
-  private String errorStack;
-  private T result;
+    private static final long serialVersionUID = -3655843737033626726L;
+    private RespCode code = RespCode.SUCCESS;
+    private String errorMsg;
+    private String errorStack;
+    private T result;
 
-  public String getErrorMsg() {
-    return errorMsg;
-  }
+    public String getErrorMsg() {
+        return errorMsg;
+    }
 
-  public void setErrorMsg(String errorMsg) {
-    this.errorMsg = errorMsg;
-  }
+    public void setErrorMsg(String errorMsg) {
+        this.errorMsg = errorMsg;
+    }
 
-  public T getResult() {
-    return result;
-  }
+    public T getResult() {
+        return result;
+    }
 
-  public void setResult(T result) {
-    this.result = result;
-  }
+    public void setResult(T result) {
+        this.result = result;
+    }
 
-  public RespCode getCode() {
-    return code;
-  }
+    public RespCode getCode() {
+        return code;
+    }
 
-  public void setCode(RespCode code) {
-    this.code = code;
-  }
+    public void setCode(RespCode code) {
+        this.code = code;
+    }
 
-  public String getErrorStack() {
-    return errorStack;
-  }
+    public String getErrorStack() {
+        return errorStack;
+    }
 
-  public void setErrorStack(String errorStack) {
-    this.errorStack = errorStack;
-  }
+    public void setErrorStack(String errorStack) {
+        this.errorStack = errorStack;
+    }
+
+    public void setErrorStack(Throwable e) {
+        this.errorStack = ExceptionUtils.getStackTrace(e);
+    }
 
 }

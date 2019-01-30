@@ -1,6 +1,7 @@
 package org.qingfox.framework.microservice;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang3.Validate;
@@ -11,87 +12,94 @@ import org.qingfox.framework.microservice.annotations.Register;
 
 public abstract class MicroserviceServer implements IServer {
 
-  private static final ILogger logger = LoggerFactory.getLogger(MicroserviceServer.class);
+    private static final ILogger logger = LoggerFactory.getLogger(MicroserviceServer.class);
 
-  private Integer port;
+    /**
+     * 服务端口
+     */
+    private Integer port;
 
-  private String scanPackage;
+    /**
+     * 扫描包
+     */
+    private String scanPackage;
 
-  private List<String> classList;
+    /**
+     * 服务类
+     */
+    private List<Class<?>> serviceList;
 
-  @Override
-  public void setPort(Integer port) {
-    this.port = port;
-  }
-
-  @Override
-  public Integer getPort() {
-    return this.port;
-  }
-
-  @Override
-  public String getScanPackage() {
-    return scanPackage;
-  }
-
-  @Override
-  public void setScanPackage(String scanPackage) {
-    this.scanPackage = scanPackage;
-  }
-
-  @Override
-  public void start() throws IOException {
-    Validate.notNull(port, "port is null");
-    logger.info("port - ", port);
-    beforeStart();
-    scanPackage();
-    Validate.notEmpty(classList, "classList is empty");
-    registerServices(classList);
-  }
-
-  @Override
-  public void stop() {
-  }
-
-  /**
-   * 开始扫描包
-   * 
-   * @throws IOException
-   */
-  private void scanPackage() throws IOException {
-    Validate.notEmpty(scanPackage, "scanPackage is null");
-    logger.info("scanPackage - ", scanPackage);
-    PackageScanner scanner = new PackageScanner(scanPackage);
-    classList = scanner.scan();
-    logger.info("classList size - ", classList.size());
-  }
-
-  /**
-   * 注册服务
-   * 
-   * @param classList
-   */
-  private void registerServices(List<String> classList) {
-    for (String classStr : classList) {
-      logger.debug("class - ", classStr);
-      try {
-        Class<?> _class = Class.forName(classStr, false, this.getClass().getClassLoader());
-        Register register = _class.getAnnotation(Register.class);
-        if (register != null) {
-          logger.debug(classStr, " is not service class");
-        }
-        logger.debug("start register class - ", classStr);
-        registerService(_class);
-        logger.debug("register class - ", classStr, " success");
-      } catch (ExceptionInInitializerError | ClassNotFoundException | UnsatisfiedLinkError | NoClassDefFoundError e) {
-        logger.warn(e, "load or register class error - ", classStr);
-        continue;
-      }
+    @Override
+    public void setPort(Integer port) {
+        this.port = port;
     }
-  }
 
-  protected abstract void registerService(Class<?> _class);
+    @Override
+    public Integer getPort() {
+        return this.port;
+    }
 
-  protected abstract void beforeStart();
+    @Override
+    public String getScanPackage() {
+        return scanPackage;
+    }
+
+    @Override
+    public void setScanPackage(String scanPackage) {
+        this.scanPackage = scanPackage;
+    }
+
+    @Override
+    public void start() throws IOException {
+        Validate.notNull(port, "port is null");
+        logger.info("port - ", port);
+        scanPackage();
+        onStart();
+    }
+
+    @Override
+    public void stop() {
+    }
+
+    /**
+     * 开始扫描包
+     * 
+     * @throws IOException
+     */
+    private void scanPackage() throws IOException {
+        Validate.notEmpty(scanPackage, "scanPackage is null");
+        logger.info("scanPackage - ", scanPackage);
+        PackageScanner scanner = new PackageScanner(scanPackage);
+        List<String> classList = scanner.scan();
+        if (classList == null || classList.isEmpty()) {
+            logger.info("classList is empty");
+            return;
+        }
+        logger.info("classList size - ", classList.size());
+
+        serviceList = new ArrayList<>();
+
+        for (String classStr : classList) {
+            try {
+                Class<?> _class = Class.forName(classStr, false, this.getClass().getClassLoader());
+                Register register = _class.getAnnotation(Register.class);
+                if (register == null) {
+                    continue;
+                }
+                logger.info("add service class - ", classStr);
+                serviceList.add(_class);
+            } catch (ExceptionInInitializerError | ClassNotFoundException | UnsatisfiedLinkError | NoClassDefFoundError e) {
+                logger.warn(e, "load class error - ", classStr);
+                continue;
+            }
+
+        }
+    }
+
+    protected abstract void onStart();
+
+    protected List<Class<?>> getServiceList() {
+        return serviceList;
+    }
 
 }

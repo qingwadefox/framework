@@ -5,10 +5,10 @@ import java.util.Scanner;
 
 import  org.qingfox.framework.common.utils.DateUtil;
 
-public class Test {
+public class ClockinTool {
 
     public static long DIFFTIME = 8 * 60 * 60 * 1000;
-    public static String DATESTR = "14:07 18:00 18:47";
+    public static String DATESTR = "08:52 12:00 13:30";
 
     public static void main(String[] args) {
 //        Scanner scan = new Scanner(System.in);
